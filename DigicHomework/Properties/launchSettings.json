@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DigicHomework": {
+      "commandName": "Project",
+      "commandLineArgs": "\"{\"\"Employees\"\": [{\"\"emailAddress\"\": \"\"edward.snowden@cia.com\"\", \"\"employeeCode\"\": \"\"E1\"\", \"\"firstName\"\": \"\"Edward\"\", \"\"jobTitleName\"\": \"\"Developer\"\", \"\"lastName\"\": \"\"Snowden\"\", \"\"phoneNumber\"\": \"\"408-1234567\"\", \"\"preferredFullName\"\": \"\"Edward Snowden\"\", \"\"userId\"\": \"\"esnowden\"\"}, {\"\"emailAddress\"\": \"\"tomhanks@hollywood.com\"\", \"\"employeeCode\"\": \"\"E2\"\", \"\"firstName\"\": \"\"Tom\"\", \"\"jobTitleName\"\": \"\"Program Directory\"\", \"\"lastName\"\": \"\"Hanks\"\", \"\"phoneNumber\"\": \"\"408-2222222\"\", \"\"preferredFullName\"\": \"\"Tom Hanks\"\", \"\"userId\"\": \"\"thanks\"\"}]}\"\r\nemployeecode\r\ndesc"
+    }
+  }
+}

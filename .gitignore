@@ -6,3 +6,6 @@
 /DigicHomework/obj
 /DigicHomework.Domain/obj
 /DigicHomework.UnitTests/obj
+/DigicHomework/bin/Debug/net9.0
+/DigicHomework.Domain/bin/Debug/net9.0
+/DigicHomework.UnitTests/bin/Debug/net9.0
