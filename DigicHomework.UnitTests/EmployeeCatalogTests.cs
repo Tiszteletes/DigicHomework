@@ -112,6 +112,42 @@ namespace DigicHomework.UnitTests
             actual.Should().BeEquivalentTo(expected);
         }
 
+        [Fact]
+        public void EmployeeCatalog_Export_Desc_Should_Return_EmployeeCatalog_Json()
+        {
+            // Arrange
+            var expected = JToken.Parse(@"{
+                ""Employees"" : [
+                {
+                ""userId"":""thanks"",
+                ""jobTitleName"":""Program Directory"",
+                ""firstName"":""Tom"",
+                ""lastName"":""Hanks"",
+                ""preferredFullName"":""Tom Hanks"",
+                ""employeeCode"":""E2"",
+                ""phoneNumber"":""408-2222222"",
+                ""emailAddress"":""tomhanks@hollywood.com""
+                },
+                {
+                ""userId"":""esnowden"",
+                ""jobTitleName"":""Developer"",
+                ""firstName"":""Edward"",
+                ""lastName"":""Snowden"",
+                ""preferredFullName"":""Edward Snowden"",
+                ""employeeCode"":""E1"",
+                ""phoneNumber"":""408-1234567"",
+                ""emailAddress"":""edward.snowden@cia.com""
+                },
+                ]
+            }").ToString(Formatting.None);
+
+            // Act
+            var actual = JToken.Parse(employeeCatalog.Export("employeeCode", "desc")).ToString(Formatting.None);
+
+            // Assert
+            actual.Should().BeEquivalentTo(expected);
+        }
+
         [Theory]
         [InlineData("employeeCode", "asc", "Edward")]
         [InlineData("employeeCode", "desc", "No")]
