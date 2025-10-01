@@ -2,6 +2,7 @@ using DigicHomework.Domain;
 using FluentAssertions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Linq.Dynamic.Core.Exceptions;
 
 namespace DigicHomework.UnitTests
 {
@@ -121,6 +122,8 @@ namespace DigicHomework.UnitTests
         [Theory]
         [InlineData("desc")]
         [InlineData("descending")]
+        [InlineData("Desc")]
+        [InlineData("DESCENDING")]
         public void EmployeeSorter_ParseDirection_Should_Return_Desc(string input)
         {
             // Arrange
@@ -131,6 +134,36 @@ namespace DigicHomework.UnitTests
 
             // Assert
             actual.Should().Be(expected);
+        }
+
+        [Fact]
+        public void EmployeeSorter_Wrong_Json_Input_Should_Throw_Exception()
+        {
+            // Arrange
+
+            // Act
+            var act = () =>
+            {
+                EmployeeSorter.SortEmployees("This is not a JSON", "employeeCode", "asc");
+            };
+
+            // Arrange
+            act.Should().Throw<System.Text.Json.JsonException>().WithMessage("'T' is an invalid start of a value. Path*");
+        }
+
+        [Fact]
+        public void EmployeeSorter_Wrong_OrderBy_Input_Should_Throw_Exception()
+        {
+            // Arrange
+
+            // Act
+            var act = () =>
+            {
+                EmployeeSorter.SortEmployees(input, "notAField", "asc");
+            };
+
+            // Arrange
+            act.Should().Throw<ParseException>().WithMessage("No property or field 'notAField' exists in type 'Employee'*");
         }
     }
 }
