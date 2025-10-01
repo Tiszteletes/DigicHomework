@@ -19,21 +19,13 @@ namespace DigicHomework.Domain
         public string Export(string orderBy, string direction)
         {
             // Nice to have: parameter validation
-            direction = ParseDirection(direction);
+            direction = EmployeeSorter.ParseDirection(direction);
             Employees = [.. Employees.AsQueryable().OrderBy($"{orderBy} {direction}")];
-            return System.Text.Json.JsonSerializer.Serialize(this);
-        }
-
-        private string ParseDirection(string direction)
-        {
-            if ( direction.Contains("desc", StringComparison.InvariantCultureIgnoreCase))
+            var optins = new System.Text.Json.JsonSerializerOptions
             {
-                return "desc";
-            }
-            else
-            {
-                return "asc";
-            }
+                WriteIndented = true
+            };
+            return System.Text.Json.JsonSerializer.Serialize(this, optins);
         }
     }
 }
