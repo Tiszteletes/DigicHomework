@@ -13,5 +13,4 @@ try
 catch (Exception ex)
 {
     Console.WriteLine($"Error occured during the employee sorting: {ex.Message}");
-    return;
 }
